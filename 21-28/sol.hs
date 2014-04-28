@@ -31,3 +31,8 @@ combinations _ []  = []
 combinations n (x:xs) = [x:y | y <- combinations (n-1) xs] ++ combinations n xs
 
 --Problem27 
+group' [n] xs  = map (\x->[x]) (combinations n xs)
+group' (n:ns) xs = let c = combinations n xs
+                  in [f:r | f <- c , r <- (group' ns (xs\\f))]
+
+--Problem28
