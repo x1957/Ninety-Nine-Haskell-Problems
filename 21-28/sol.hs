@@ -36,3 +36,5 @@ group' (n:ns) xs = let c = combinations n xs
                   in [f:r | f <- c , r <- (group' ns (xs\\f))]
 
 --Problem28
+lsort = sortBy (\x y -> compare (length x) (length y))
+lfsort  = concat.lsort.groupBy (\x y->(length x) == (length y)) . lsort
